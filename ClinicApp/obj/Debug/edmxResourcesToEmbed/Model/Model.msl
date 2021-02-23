@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ClinicDBModelStoreContainer" CdmEntityContainer="ClinicDBEntities">
+    <EntitySetMapping Name="Card">
+      <EntityTypeMapping TypeName="ClinicDBModel.Card">
+        <MappingFragment StoreEntitySet="Card">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardRecord">
+      <EntityTypeMapping TypeName="ClinicDBModel.CardRecord">
+        <MappingFragment StoreEntitySet="CardRecord">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RecordNumber" ColumnName="RecordNumber" />
+          <ScalarProperty Name="Diaghosis" ColumnName="Diaghosis" />
+          <ScalarProperty Name="AddInfo" ColumnName="AddInfo" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="ClinicEmployeeID" ColumnName="ClinicEmployeeID" />
+          <ScalarProperty Name="CardID" ColumnName="CardID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardRecordMedicalTest">
+      <EntityTypeMapping TypeName="ClinicDBModel.CardRecordMedicalTest">
+        <MappingFragment StoreEntitySet="CardRecordMedicalTest">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CardRecordID" ColumnName="CardRecordID" />
+          <ScalarProperty Name="MedicalTestID" ColumnName="MedicalTestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardRecordMedicine">
+      <EntityTypeMapping TypeName="ClinicDBModel.CardRecordMedicine">
+        <MappingFragment StoreEntitySet="CardRecordMedicine">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+          <ScalarProperty Name="CardRecordID" ColumnName="CardRecordID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClinicEmployee">
+      <EntityTypeMapping TypeName="ClinicDBModel.ClinicEmployee">
+        <MappingFragment StoreEntitySet="ClinicEmployee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicalTest">
+      <EntityTypeMapping TypeName="ClinicDBModel.MedicalTest">
+        <MappingFragment StoreEntitySet="MedicalTest">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TestName" ColumnName="TestName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+          <ScalarProperty Name="ClinicEmployeeID" ColumnName="ClinicEmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicine">
+      <EntityTypeMapping TypeName="ClinicDBModel.Medicine">
+        <MappingFragment StoreEntitySet="Medicine">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+          <ScalarProperty Name="OneTimeQuantity" ColumnName="OneTimeQuantity" />
+          <ScalarProperty Name="DayTimes" ColumnName="DayTimes" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient">
+      <EntityTypeMapping TypeName="ClinicDBModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CardID" ColumnName="CardID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Position">
+      <EntityTypeMapping TypeName="ClinicDBModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ClinicDBModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientsListView">
+      <EntityTypeMapping TypeName="ClinicDBModel.PatientsListView">
+        <MappingFragment StoreEntitySet="PatientsListView">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PatientByPhone" FunctionName="ClinicDBModel.Store.PatientByPhone">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClinicDBModel.PatientByPhone_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PatientsByFIO" FunctionName="ClinicDBModel.Store.PatientsByFIO" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ClinicDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ClinicDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ClinicDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ClinicDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClinicDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ClinicDBModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClinicDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ClinicDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ClinicDBModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="InsertCard" FunctionName="ClinicDBModel.Store.InsertCard" />
+    <FunctionImportMapping FunctionImportName="InsertPatient" FunctionName="ClinicDBModel.Store.InsertPatient" />
+    <FunctionImportMapping FunctionImportName="GetPatientByID" FunctionName="ClinicDBModel.Store.GetPatientByID" />
+    <FunctionImportMapping FunctionImportName="GetCardRecordsByCardId" FunctionName="ClinicDBModel.Store.GetCardRecordsByCardId" />
+    <FunctionImportMapping FunctionImportName="GetDocterID" FunctionName="ClinicDBModel.Store.GetDocterID" />
+    <FunctionImportMapping FunctionImportName="GetRecordByDate" FunctionName="ClinicDBModel.Store.GetRecordByDate" />
+    <FunctionImportMapping FunctionImportName="GetRecordByDiaghosis" FunctionName="ClinicDBModel.Store.GetRecordByDiaghosis" />
+    <FunctionImportMapping FunctionImportName="InsertCardRecord" FunctionName="ClinicDBModel.Store.InsertCardRecord" />
+    <FunctionImportMapping FunctionImportName="InsertCardRecordMedicalTests" FunctionName="ClinicDBModel.Store.InsertCardRecordMedicalTests" />
+    <FunctionImportMapping FunctionImportName="InsertCardRecordMedicine" FunctionName="ClinicDBModel.Store.InsertCardRecordMedicine" />
+    <EntitySetMapping Name="CardRecordsWithDoctorNameView">
+      <EntityTypeMapping TypeName="ClinicDBModel.CardRecordsWithDoctorNameView">
+        <MappingFragment StoreEntitySet="CardRecordsWithDoctorNameView">
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Diaghosis" ColumnName="Diaghosis" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="RecordNumber" ColumnName="RecordNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetMedicineByName" FunctionName="ClinicDBModel.Store.GetMedicineByName" />
+    <FunctionImportMapping FunctionImportName="GetTestByName" FunctionName="ClinicDBModel.Store.GetTestByName" />
+    <FunctionImportMapping FunctionImportName="GetCardRecordID" FunctionName="ClinicDBModel.Store.GetCardRecordID" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3b52b0dd7d8644b98a2a5611a62fc393" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="ClinicDBModel.Card" Width="1.5" PointX="9" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.CardRecord" Width="1.5" PointX="6.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.CardRecordMedicalTest" Width="1.5" PointX="3.875" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.CardRecordMedicine" Width="1.5" PointX="8.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.ClinicEmployee" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.MedicalTest" Width="1.5" PointX="1.625" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.Medicine" Width="1.5" PointX="11.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.Patient" Width="1.5" PointX="11.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.Position" Width="1.5" PointX="3.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.sysdiagrams" Width="1.5" PointX="19.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.PatientsListView" Width="1.5" PointX="15.25" PointY="17.5" IsExpanded="true" />
+        <AssociationConnector Association="ClinicDBModel.FK_CardRecord_Card" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK_Patient_Card" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK_CardRecord_ClinicEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK_CardRecordMedicalTest_CardRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK_Table_CardRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK_CardRecordMedicalTest_MedicalTest" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK_Table_Medicine" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK_ClinicEmployee_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK_MedicalTest_ClinicEmployee" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ClinicDBModel.CardRecordsWithDoctorNameView" Width="1.5" PointX="17.125" PointY="17.375" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClinicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CardNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecordNumber" Type="int" Nullable="false" />
+    <Property Name="Diaghosis" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AddInfo" Type="nvarchar(max)" />
+    <Property Name="RecordDate" Type="date" Nullable="false" />
+    <Property Name="ClinicEmployeeID" Type="int" Nullable="false" />
+    <Property Name="CardID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardRecordMedicalTest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CardRecordID" Type="int" />
+    <Property Name="MedicalTestID" Type="int" />
+  </EntityType>
+  <EntityType Name="CardRecordMedicine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MedicineID" Type="int" />
+    <Property Name="CardRecordID" Type="int" />
+  </EntityType>
+  <EntityType Name="ClinicEmployee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BirthDate" Type="date" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PositionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MedicalTest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TestName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Info" Type="nvarchar(max)" />
+    <Property Name="ClinicEmployeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Medicine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MedicineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OneTimeQuantity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DayTimes" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Duration" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="BirthDate" Type="date" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CardID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Salary" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ClinicDB.dbo.CardRecordsWithDoctorNameView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CardRecordsWithDoctorNameView">
+    <Key>
+      <PropertyRef Name="RecordNumber" />
+      <PropertyRef Name="RecordDate" />
+      <PropertyRef Name="Diaghosis" />
+      <PropertyRef Name="FIO" />
+    </Key>
+    <Property Name="RecordNumber" Type="int" Nullable="false" />
+    <Property Name="RecordDate" Type="date" Nullable="false" />
+    <Property Name="Diaghosis" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FIO" Type="nchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ClinicDB.dbo.PatientsListView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PatientsListView">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="FIO" />
+      <PropertyRef Name="Phone" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CardNumber" Type="int" />
+  </EntityType>
+  <Association Name="FK_CardRecord_Card">
+    <End Role="Card" Type="Self.Card" Multiplicity="1" />
+    <End Role="CardRecord" Type="Self.CardRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CardRecord">
+        <PropertyRef Name="CardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CardRecord_ClinicEmployee">
+    <End Role="ClinicEmployee" Type="Self.ClinicEmployee" Multiplicity="1" />
+    <End Role="CardRecord" Type="Self.CardRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClinicEmployee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CardRecord">
+        <PropertyRef Name="ClinicEmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CardRecordMedicalTest_CardRecord">
+    <End Role="CardRecord" Type="Self.CardRecord" Multiplicity="0..1" />
+    <End Role="CardRecordMedicalTest" Type="Self.CardRecordMedicalTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardRecord">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CardRecordMedicalTest">
+        <PropertyRef Name="CardRecordID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CardRecordMedicalTest_MedicalTest">
+    <End Role="MedicalTest" Type="Self.MedicalTest" Multiplicity="0..1" />
+    <End Role="CardRecordMedicalTest" Type="Self.CardRecordMedicalTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalTest">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CardRecordMedicalTest">
+        <PropertyRef Name="MedicalTestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicEmployee_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="ClinicEmployee" Type="Self.ClinicEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClinicEmployee">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalTest_ClinicEmployee">
+    <End Role="ClinicEmployee" Type="Self.ClinicEmployee" Multiplicity="1" />
+    <End Role="MedicalTest" Type="Self.MedicalTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClinicEmployee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MedicalTest">
+        <PropertyRef Name="ClinicEmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Card">
+    <End Role="Card" Type="Self.Card" Multiplicity="1" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="CardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_CardRecord">
+    <End Role="CardRecord" Type="Self.CardRecord" Multiplicity="0..1" />
+    <End Role="CardRecordMedicine" Type="Self.CardRecordMedicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardRecord">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CardRecordMedicine">
+        <PropertyRef Name="CardRecordID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_Medicine">
+    <End Role="Medicine" Type="Self.Medicine" Multiplicity="0..1" />
+    <End Role="CardRecordMedicine" Type="Self.CardRecordMedicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicine">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CardRecordMedicine">
+        <PropertyRef Name="MedicineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetCardRecordID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cardID" Type="int" Mode="In" />
+    <Parameter Name="recordNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetCardRecordsByCardId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cardID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetDocterID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fio" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetMedicineByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MedicineName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetPatientByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetRecordByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cardID" Type="int" Mode="In" />
+    <Parameter Name="recordDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="GetRecordByDiaghosis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cardID" Type="int" Mode="In" />
+    <Parameter Name="diaghosis" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="GetTestByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TestName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cardNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertCardRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="recordNumber" Type="int" Mode="In" />
+    <Parameter Name="diaghosis" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="info" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="date" Type="date" Mode="In" />
+    <Parameter Name="docterID" Type="int" Mode="In" />
+    <Parameter Name="cardID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertCardRecordMedicalTests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="medTestID" Type="int" Mode="In" />
+    <Parameter Name="cardRecID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertCardRecordMedicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="medID" Type="int" Mode="In" />
+    <Parameter Name="cardRecID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertPatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fio" Type="nvarchar" Mode="In" />
+    <Parameter Name="birthDate" Type="date" Mode="In" />
+    <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="cardID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PatientByPhone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="PatientsByFIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FIO" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="ClinicDBModelStoreContainer">
+    <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardRecord" EntityType="Self.CardRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardRecordMedicalTest" EntityType="Self.CardRecordMedicalTest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardRecordMedicine" EntityType="Self.CardRecordMedicine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClinicEmployee" EntityType="Self.ClinicEmployee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MedicalTest" EntityType="Self.MedicalTest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardRecordsWithDoctorNameView" EntityType="Self.CardRecordsWithDoctorNameView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CardRecordsWithDoctorNameView].[RecordNumber] AS [RecordNumber], 
+    [CardRecordsWithDoctorNameView].[RecordDate] AS [RecordDate], 
+    [CardRecordsWithDoctorNameView].[Diaghosis] AS [Diaghosis], 
+    [CardRecordsWithDoctorNameView].[FIO] AS [FIO]
+    FROM [dbo].[CardRecordsWithDoctorNameView] AS [CardRecordsWithDoctorNameView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PatientsListView" EntityType="Self.PatientsListView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PatientsListView].[Id] AS [Id], 
+    [PatientsListView].[FIO] AS [FIO], 
+    [PatientsListView].[Phone] AS [Phone], 
+    [PatientsListView].[CardNumber] AS [CardNumber]
+    FROM [dbo].[PatientsListView] AS [PatientsListView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CardRecord_Card" Association="Self.FK_CardRecord_Card">
+      <End Role="Card" EntitySet="Card" />
+      <End Role="CardRecord" EntitySet="CardRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CardRecord_ClinicEmployee" Association="Self.FK_CardRecord_ClinicEmployee">
+      <End Role="ClinicEmployee" EntitySet="ClinicEmployee" />
+      <End Role="CardRecord" EntitySet="CardRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CardRecordMedicalTest_CardRecord" Association="Self.FK_CardRecordMedicalTest_CardRecord">
+      <End Role="CardRecord" EntitySet="CardRecord" />
+      <End Role="CardRecordMedicalTest" EntitySet="CardRecordMedicalTest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CardRecordMedicalTest_MedicalTest" Association="Self.FK_CardRecordMedicalTest_MedicalTest">
+      <End Role="MedicalTest" EntitySet="MedicalTest" />
+      <End Role="CardRecordMedicalTest" EntitySet="CardRecordMedicalTest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicEmployee_Position" Association="Self.FK_ClinicEmployee_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="ClinicEmployee" EntitySet="ClinicEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalTest_ClinicEmployee" Association="Self.FK_MedicalTest_ClinicEmployee">
+      <End Role="ClinicEmployee" EntitySet="ClinicEmployee" />
+      <End Role="MedicalTest" EntitySet="MedicalTest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Card" Association="Self.FK_Patient_Card">
+      <End Role="Card" EntitySet="Card" />
+      <End Role="Patient" EntitySet="Patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_CardRecord" Association="Self.FK_Table_CardRecord">
+      <End Role="CardRecord" EntitySet="CardRecord" />
+      <End Role="CardRecordMedicine" EntitySet="CardRecordMedicine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_Medicine" Association="Self.FK_Table_Medicine">
+      <End Role="Medicine" EntitySet="Medicine" />
+      <End Role="CardRecordMedicine" EntitySet="CardRecordMedicine" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
